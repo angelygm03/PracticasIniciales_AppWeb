@@ -1,32 +1,121 @@
-.formContainer {
-    width: 1200px;
-    height: 160px;
-    padding: 20px;
-    margin: auto;
-    margin-top: 40px;
-    border-radius: 12px;
-    background-color: #FFD28F;
+.appwrapper {
+background-color: white; 
 }
-.topText {
-    text-align: center;
-    font-size: 30px;
-} .subtitle {
-    text-align: center;
-    padding: 1px;
-    font-size: 24px;
-}
-.label {
-    display: block;
-    margin-bottom: 10px;
-    text-align: left;
-    font-size: 16px;
-    margin-top: 10px;
+.contenedor {
+position: relative;
+text-align: center;
 }
 
-.inputField {
-    width: 350; 
-    height: 40px; 
-    padding: 5px; 
-    text-align: left;
-    margin-bottom: 10px;
+.cuadrado{
+width: 850px; 
+height: 600px; 
+margin: auto;
+margin-top: 80px;
+background-color: white;
+border: 2px solid black;
+overflow: auto;
+}
+
+.label{
+position: absolute;
+top: -30px; 
+left: 25%; 
+transform: translateX(-50%);
+font-family: Arial;
+font-weight: bold;
+}
+
+.listafiltros{
+position: absolute;
+top: 20px;
+right: 1177px;
+z-index: 1;
+background-color: white;
+padding: 10px;
+border: 1px solid black;
+border-radius: 5px;
+text-align: left;
+}
+
+.buscador {
+width: 900px; 
+margin: 0 auto; 
+text-align: center;
+}
+.buscador .lupa {
+position: absolute;
+left: 5px;
+top: 8px;
+}
+
+.buscador button{
+background-color: gray; 
+color: white; 
+}
+
+.buscador button:hover{
+background-color: darkgrey; 
+}
+
+.botonperfil {
+text-align: center;
+position: absolute;
+top: 20px; 
+left: 94%; 
+}
+
+.botonperfil button {
+background-color: blue; 
+color: white; 
+border: none; 
+padding: 3px 5px; 
+cursor: pointer; 
+border-radius: 5px; 
+}
+
+.botonperfil button:hover {
+background-color: darkblue; 
+margin-top: 100px;
+left: 94%
+}
+
+.botonpubli {
+text-align: center;
+position: absolute;
+top: -50px; 
+left: 67.5%; 
+}
+.botonpubli button {
+background-color: green; 
+color: white; 
+border: none; 
+padding: 10px 20px; 
+cursor: pointer; 
+border-radius: 5px; 
+}
+
+.botonpubli button:hover {
+background-color: darkgreen; 
+}
+
+.imagencontainer {
+position: absolute; 
+top: 0; 
+left: 0 
+}
+
+.imagen {
+width: 250px; 
+}
+
+.textar {
+width: 140px; 
+height: 20px;
+resize: none;
+position: absolute;
+top: 20px;
+left: 1250px;
+text-align: right;
+border: none;
+margin-top: 40px;
 }
