@@ -11,7 +11,7 @@ function Login(props) {
         const form = e.target;
         const formData = new FormData(form);
 
-        const response = await fetch('http://localhost:4000/auth/login', {
+        const response = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
             headers: {
                 'enctype': 'multipart/form-data',
@@ -42,11 +42,9 @@ function Login(props) {
                     <label htmlFor="password" className={styles.label}>Contraseña:</label>
                     <input type="password" id="password" name="password" placeholder="*****" />
                 </div>
+                
                 <div>
-                    <button type="submit" className={styles.botonIngresar}> Ingresar </button>
-                </div>
-                <div>
-                <Link to="/inicio" className={`${styles.botonIngresar} boton-ingresar`}></Link>
+                <Link to="/inicial" className={`${styles.botonRegistro} boton-ingresar`}>Ingresar</Link>
                 </div>
                 <div>
                 <Link to="/registro" className={`${styles.botonRegistro} boton-registro`}> Registrarse </Link>
