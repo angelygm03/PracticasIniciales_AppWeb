@@ -46,7 +46,7 @@ function Login(props) {
                     <button type="submit" className={styles.botonIngresar}> Ingresar </button>
                 </div>
                 <div>
-                <Link to="/inicio" className={`${styles.botonIngresar} boton-ingresar`}></Link>
+                <Link to="/password_reset" className={`${styles.botonPassword} boton-password`}>¿Olvidó su contraseña?</Link>
                 </div>
                 <div>
                 <Link to="/registro" className={`${styles.botonRegistro} boton-registro`}> Registrarse </Link>

@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login'
 import Registro from './components/Registro/Registro'
 import Inicio from './components/Inicio/Inicio'
+import Password from './components/Password/Password'
 
 export const UserContext = React.createContext();
 
@@ -17,9 +18,14 @@ function App() {
       <Route path="/" element={<Login setUsuario={setUsuario} />} />
       <Route path="/login" element={<Login setUsuario={setUsuario} />} />
 
-      <Route path="/registro" element={<Registro />}>   
-      <Route patho="/inicio" element={<Inicio />} />
+      <Route path="/registro" element={<Registro />}> 
       </Route>
+
+        <Route path="/inicio" element={<Inicio />}>
+        </Route>
+
+        <Route path="/password_reset" element={<Password />}>
+        </Route>
 
       </Routes>
     </UserContext.Provider>

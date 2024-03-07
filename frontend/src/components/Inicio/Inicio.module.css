@@ -1,0 +1,32 @@
+.formContainer {
+    width: 1200px;
+    height: 160px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 12px;
+    background-color: #FFD28F;
+}
+.topText {
+    text-align: center;
+    font-size: 30px;
+} .subtitle {
+    text-align: center;
+    padding: 1px;
+    font-size: 24px;
+}
+.label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.inputField {
+    width: 350; 
+    height: 40px; 
+    padding: 5px; 
+    text-align: left;
+    margin-bottom: 10px;
+}
