@@ -22,7 +22,7 @@ function Inicial(){
             </div>
             <textarea
             className={styles.textar}
-            value='Nombre Usuario'
+            value='Name User'
             readOnly 
             />
             <div class={styles.contenedor}>
