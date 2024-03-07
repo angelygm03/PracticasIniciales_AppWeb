@@ -1,0 +1,55 @@
+body {
+    background-color: #f7f4ef; 
+}
+
+.formContainer {
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 80px;
+    border-radius: 5px;
+    background-color: #fae6b1;
+}
+.topText {
+    text-align: center;
+} .subtitle {
+    text-align: center;
+    padding: 15px;
+}
+.label {
+    display: block;
+    margin-bottom: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.inputField {
+    width: 400px; 
+    height: 33px; 
+    padding: 5px; 
+    text-align: left;
+}
+
+.botonIngresar {
+    width: 350px;
+    height: 32px;
+    border-style: none;
+    background-color: #ffa101;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+.botonRegistro {
+    width: 350px;
+    height: 32px;
+    border-style: none;
+    background-color: #ffa101;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+}
