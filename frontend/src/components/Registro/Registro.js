@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Registro() {
-    const [usuario, setUsuario] = useState([]);
     const [mostrarAlerta, setMostrarAlerta] = useState(false);
     const navigate = useNavigate();
     const camposObligatorios = ['nombre', 'apellido', 'registroAcademico', 'password', 'correo'];
-    const [usuariosExistentes, setUsuariosExistentes] = useState([]);
-    const [nuevoUsuario, setNuevoUsuario] = useState({});
 
     const handleRegistro = async (e) => {
         e.preventDefault();
@@ -17,7 +14,6 @@ function Registro() {
         const formData = new FormData(form);
         const camposIncompletos = camposObligatorios.filter((campo) => !formData.get(campo));
 
-        const registroAcademico = formData.get('registroAcademico');
         const password = formData.get('password');
         if (password.length < 8) {
             alert('La contraseña debe tener al menos 8 caracteres.');
@@ -27,8 +23,22 @@ function Registro() {
         if (camposIncompletos.length > 0) {
             alert('Por favor, complete todos los campos obligatorios.');
         } else {
-            setUsuariosExistentes([...usuariosExistentes, usuario]);
+            try {
+                const response = await fetch('http://localhost:3000/registro', {
+                    method: 'POST',
+                    body: formData
+                });
 
+                if (!response.ok) {
+                    throw new Error('Error al registrar el usuario');
+                }
+
+                console.log('Usuario registrado exitosamente');
+                setMostrarAlerta(true);
+            } catch (error) {
+                console.error('Error al registrar el usuario:', error);
+                alert('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
+            }
         }
     }
 
@@ -80,4 +90,4 @@ function Registro() {
       );
 }
 
-export default Registro; 
+export default Registro;
