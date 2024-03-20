@@ -40,16 +40,7 @@
     margin-top: 20px;
     font-size: 15px;
 }
-.btnAceptar {
-    text-align: center ;
-    border-style: none;
-    background-color: #58bf60;
-    color: whitesmoke;
-    border-radius: 5px;
-    margin-top: 8px;
-    width: 140px;
-    height: 35px;
-}
+
 .bottomText {
     font-size: 12px;
     margin-top: 20px;

@@ -1,50 +1,44 @@
 import styles from './Registro.module.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SignupValidation from './RegistroValidation';
+import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 function Registro() {
-    const [mostrarAlerta, setMostrarAlerta] = useState(false);
+    const [values, setValues] = useState({
+        nombre: '',
+        apellido: '',
+        registroAcademico: '',
+        password: '',
+        correo: ''
+    })
+
     const navigate = useNavigate();
-    const camposObligatorios = ['nombre', 'apellido', 'registroAcademico', 'password', 'correo'];
+    const [errors, setErrors] = useState({})
 
-    const handleRegistro = async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-        const formData = new FormData(form);
-        const camposIncompletos = camposObligatorios.filter((campo) => !formData.get(campo));
-
-        const password = formData.get('password');
-        if (password.length < 8) {
-            alert('La contraseña debe tener al menos 8 caracteres.');
-            return;
+    useEffect(() => {
+        if (Object.values(errors).every(error => error === "")) {
+            axios.post('http://localhost:8000/registro', values)
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
         }
+    }, [errors, values]);
 
-        if (camposIncompletos.length > 0) {
-            alert('Por favor, complete todos los campos obligatorios.');
-        } else {
-            try {
-                const response = await fetch('http://localhost:3000/registro', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error al registrar el usuario');
-                }
-
-                console.log('Usuario registrado exitosamente');
-                setMostrarAlerta(true);
-            } catch (error) {
-                console.error('Error al registrar el usuario:', error);
-                alert('Error al registrar el usuario. Por favor, inténtalo de nuevo.');
-            }
-        }
+    const handleInput = (event) => {
+        setValues(prev => ({ ...prev, [event.target.name]: event.target.value }))
     }
 
-    const handleAceptarAlerta = () => {
-        setMostrarAlerta(false);
-        navigate('/login');
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors(SignupValidation(values));
+        if(errors.nombre === "" && errors.apellido === "" && errors.registroAcademico === "" && errors.password === "" && errors.correo === "") {
+            axios.post('http://localhost:8000/registro', values)
+            .then(res => {
+                navigate('/');
+            })
+            .catch(err => console.log(err));
+        }
     }
 
     return (
@@ -52,42 +46,46 @@ function Registro() {
             <h2 className={styles.topText}>Universidad de San Carlos de Guatemala</h2>
             <h3 className={styles.topText}>Facultad de Ingeniería</h3>
             <h4 className={styles.subtitle}>-Registro-</h4>
-            <form onSubmit={handleRegistro} encType="multipart/form-data">
+            <form action="" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="nombre" className={styles.label}>*Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" />
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" 
+                    onChange={handleInput} className='form-control' />
+                    {errors.nombre && <span className='text-danger'>{errors.nombre}</span>}
                 </div>
                 <div>
                     <label htmlFor="apellido" className={styles.label}>*Apellido:</label>
-                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" />
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" 
+                    onChange={handleInput} className='form-control' />
+                    {errors.apellido && <span className='text-danger'>{errors.apellido}</span>}
                 </div>
                 <div>
                     <label htmlFor="registroAcademico" className={styles.label}>*Registro Académico:</label>
-                    <input type="text" id="registroAcademico" name="registroAcademico" placeholder="123456789" />
+                    <input type="text" id="registroAcademico" name="registroAcademico" placeholder="123456789" 
+                    onChange={handleInput} className='form-control' />
+                    {errors.registroAcademico && <span className='text-danger'>{errors.registroAcademico}</span>}
                 </div>
                 <div>
                     <label htmlFor="password" className={styles.label}>*Contraseña:</label>
-                    <input type="password" id="password" name="password" placeholder="***********" />
+                    <input type="password" id="password" name="password" placeholder="***********" 
+                    onChange={handleInput} className='form-control' />
+                    {errors.password && <span className='text-danger'>{errors.password}</span>}
                 </div>
                 <div>
                     <label htmlFor="correo" className={styles.label}>*Correo Electrónico:</label>
-                    <input type="correo" id="correo" name="correo" placeholder="email@correo.com" />
+                    <input type="email" id="correo" name="correo" placeholder="email@correo.com" 
+                    onChange={handleInput} className='form-control' />
+                    {errors.correo && <span className='text-danger'>{errors.correo}</span>}
                 </div>
                 <p className={styles.bottomText}>* Campos obligatorios</p>
                 <div>
-                    <button type="submit" className={styles.botonRegistro}> Aceptar </button>
+                <button type="button" className={styles.botonRegistro}>
+                Registrarse
+                </button>
                 </div>
             </form>
-                {mostrarAlerta && (
-                <div className="alert alert-success">
-                    Registro exitoso. Puedes iniciar sesión.
-                    <button className={styles.btnAceptar} onClick={handleAceptarAlerta}>
-                    Iniciar Sesión
-                    </button>
-                </div>
-                )}
         </div>
-      );
+    );
 }
 
 export default Registro;
