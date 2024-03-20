@@ -1,6 +1,7 @@
 import styles from './Inicial.module.css';
 import React,{useState} from "react";
 import { useNavigate} from 'react-router-dom';
+import Form from './form'
 
 function Inicial(){
     const nav = useNavigate
@@ -26,9 +27,7 @@ function Inicial(){
             readOnly 
             />
             <div class={styles.contenedor}>
-                <div class={styles.botonpubli}>
-                    <button>Crear Publicacion</button>
-                </div>
+                
                 <div class={styles.cuadrado}></div>
                 <label class={styles.label}>Publicaciones</label>
                 <div class={styles.listafiltros}>
@@ -41,6 +40,10 @@ function Inicial(){
                             <li><input type="radio" id="filtro3" name= "filtro"></input><label for="filtro3">Filtrar Por Nombre de Catedratico</label></li>
                         </ul>
                 </div>
+            </div>
+            <div className={styles.divisionderecha}>
+                <h5 style={{textAlign: 'center'}}>Crear Publicacion</h5>
+                <Form/>
             </div>
         </body>
     );
