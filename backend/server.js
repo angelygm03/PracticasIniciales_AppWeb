@@ -42,6 +42,34 @@ app.post('/registro', (req, res) => {
     });
 });
 
+app.post('/', (req, res) => {
+    const sql = "SELECT * FROM usuarios WHERE registroAcademico = ? AND password = ?";
+    const values = [
+        req.body.registroAcademico,
+        req.body.password
+    ]
+    console.log('Datos de la solicitud:', req.body);
+    
+    db.query(sql, [req.body.registroAcademico, req.body.password], (err, data) => {
+        if(err) {
+            console.log("Error al ejecutar la consulta SQL:", err);
+            return res.json("Error");
+        }
+        console.log('Datos obtenidos de la base de datos:', data);
+        
+        if(data.length > 0) {
+            console.log("Inicio de sesión exitoso");
+            return res.json("Success");
+        } else {
+            console.log("Inicio de sesión fallido");
+            return res.json("Failed");
+        }
+    });
+});
+
+
+
+
 app.listen(8000, () => {
     console.log("Server running on port 8000");
 });

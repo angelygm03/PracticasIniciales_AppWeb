@@ -13,7 +13,7 @@ function validation(values) {
         error.registroAcademico = ""
     }
 
-    if(values.passwor === "") {
+    if(values.password === "") {
         error.password = "Por favor, llena este campo"
     }
     else if (!password_pattern.test(values.password)) {
