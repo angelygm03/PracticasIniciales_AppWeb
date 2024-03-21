@@ -8,24 +8,15 @@ function Inicio() {
     const nav = useNavigate();
     const [registroAcademico, setRegistroAcademico] = useState('');
     const [publicaciones, setPublicaciones] = useState([]);
+    const [publicacionesFiltradas, setPublicacionesFiltradas] = useState([]);
     const [filtroSeleccionado, setFiltroSeleccionado] = useState("");
-
-    useEffect(() => {
-        axios.get('http://localhost:8000/registro')
-            .then(response => {
-                console.log('Registro académico obtenido:', response.data);
-                setRegistroAcademico(response.data.registroAcademico);
-            })
-            .catch(error => {
-                console.error('Error al obtener el registro académico del usuario:', error);
-            });
-    }, []);
 
     useEffect(() => {
         axios.get('http://localhost:8000/publicaciones')
             .then(response => {
                 console.log('Publicaciones obtenidas:', response.data);
                 setPublicaciones(response.data);
+                setPublicacionesFiltradas(response.data);
             })
             .catch(error => {
                 console.error('Error al obtener las publicaciones:', error);
@@ -35,54 +26,43 @@ function Inicio() {
     const handleFiltroChange = (event) => {
         const filtro = event.target.value;
         setFiltroSeleccionado(filtro);
+
         switch (filtro) {
-            case "fechaCreacion":
-                ordenarPorFechaCreacion();
-                break;
             case "curso":
-                ordenarPorCurso();
+                ordenarPublicaciones((a, b) => {
+                    if (a.curso && b.curso) {
+                        return a.curso.localeCompare(b.curso);
+                    } else {
+                        return 0;
+                    }
+                });
                 break;
             case "nombreCurso":
-                ordenarPorNombreCurso();
+                ordenarPublicaciones((a, b) => {
+                    if (a.nombreCurso && b.nombreCurso) {
+                        return a.nombreCurso.localeCompare(b.nombreCurso);
+                    } else {
+                        return 0;
+                    }
+                });
                 break;
             case "nombreCatedratico":
-                ordenarPorNombreCatedratico();
+                ordenarPublicaciones((a, b) => {
+                    if (a.nombreCatedratico && b.nombreCatedratico) {
+                        return a.nombreCatedratico.localeCompare(b.nombreCatedratico);
+                    } else {
+                        return 0;
+                    }
+                });
                 break;
             default:
                 break;
         }
     };
 
-    const ordenarPorFechaCreacion = () => {
-        const publicacionesOrdenadas = [...publicaciones].sort((a, b) => {
-            return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
-        });
-        setPublicaciones(publicacionesOrdenadas);
-    };
-
-    const ordenarPorCurso = () => {
-        const publicacionesOrdenadas = [...publicaciones].sort((a, b) => {
-            return a.curso.localeCompare(b.curso);
-        });
-        setPublicaciones(publicacionesOrdenadas);
-    };
-
-    const ordenarPorNombreCurso = () => {
-        const publicacionesOrdenadas = [...publicaciones].sort((a, b) => {
-            return a.nombreCurso.localeCompare(b.nombreCurso);
-        });
-        setPublicaciones(publicacionesOrdenadas);
-    };
-
-    const ordenarPorNombreCatedratico = () => {
-      const publicacionesOrdenadas = [...publicaciones].sort((a, b) => {
-          if (a.catedratico && b.catedratico) {
-              return a.catedratico.localeCompare(b.catedratico);
-          } else {
-              return 0;
-          }
-      });
-      setPublicaciones(publicacionesOrdenadas);
+    const ordenarPublicaciones = (comparador) => {
+        const publicacionesOrdenadas = [...publicacionesFiltradas].sort(comparador);
+        setPublicacionesFiltradas(publicacionesOrdenadas);
     };
 
     const verPerfil = () => {
@@ -112,15 +92,12 @@ function Inicio() {
             <h3>Filtros</h3>
             <select className={styles.filtroContainer} value={filtroSeleccionado} onChange={handleFiltroChange}>
                 <option value="">Seleccionar filtro</option>
-                <option value="fechaCreacion">Filtrar por Fecha de Creación</option>
-                <option value="curso">Filtrar por Curso</option>
-                <option value="catedratico">Filtrar por Catedrático</option>
-                <option value="nombreCurso">Filtro por Nombre de Curso</option>
-                <option value="nombreCatedratico">Filtrar Por Nombre de Catedrático</option>
+                <option value="nombreCurso">Filtro por Curso</option>
+                <option value="nombreCatedratico">Filtrar Por Catedrático</option>
             </select>
             </div>
             <div className={styles.contenedorPublicaciones}>
-                {publicaciones.map(publicacion => (
+                {publicacionesFiltradas.map(publicacion => (
                     <Post key={publicacion.id} publicacion={publicacion} />
                 ))}
             </div>

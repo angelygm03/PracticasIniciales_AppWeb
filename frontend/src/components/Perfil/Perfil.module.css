@@ -1,0 +1,53 @@
+.container {
+    max-width: 350px;
+    margin: 0 auto;
+    background-color: rgb(253, 251, 247);
+  }
+  
+  .card {
+    border: 1px solid #e7f7dc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+
+
+  .buttonAceptar {
+    width: 350px;
+    height: 34px;
+    border: none;
+    background-color: #ffa101;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-top: 12px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttonAceptar:hover {
+    background-color: #ff8101;
+}

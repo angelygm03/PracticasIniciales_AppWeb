@@ -35,11 +35,11 @@ function Password() {
             <form onSubmit={handlePassword} encType="multipart/form-data">
                 <div>
                     <label htmlFor="registroAcademico" className={styles.label}>Registro Académico:</label>
-                    <input type="text" id="registroAcademico" name="registroAcademico" placeholder="2000123456" />
+                    <input className={styles.inputField} type="text" id="registroAcademico" name="registroAcademico" placeholder="2000123456" />
                 </div>
                 <div>
                     <label htmlFor="correo" className={styles.label}>Correo:</label>
-                    <input type="correo" id="correo" name="correo" placeholder="email@correo.com" />
+                    <input className={styles.inputCorreo} type="correo" id="correo" name="correo" placeholder="email@correo.com" />
                 </div>
                 <div>
                     <button type="submit" className={styles.botonAceptar}> Aceptar </button>

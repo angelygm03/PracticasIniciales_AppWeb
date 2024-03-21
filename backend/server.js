@@ -129,6 +129,25 @@ app.get('/publicaciones', (req, res) => {
     });
 });
 
+app.get('/usuario/:registroAcademico', (req, res) => {
+    const registroAcademico = req.params.registroAcademico;
+    const sql = "SELECT * FROM usuarios WHERE registroAcademico = ?";
+
+    db.query(sql, [registroAcademico], (err, data) => {
+        if (err) {
+            console.log("Error al ejecutar la consulta SQL:", err);
+            return res.status(500).json({ error: "Error al recuperar los datos del usuario" });
+        }
+        console.log('Datos del usuario obtenidos de la base de datos:', data);
+
+        if (data.length > 0) {
+            return res.json(data[0]);
+        } else {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+    });
+});
+
 app.listen(8000, () => {
     console.log("Server running on port 8000");
 });
