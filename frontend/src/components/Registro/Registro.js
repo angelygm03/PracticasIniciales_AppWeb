@@ -35,11 +35,11 @@ function Registro() {
         if(errors.nombre === "" && errors.apellido === "" && errors.registroAcademico === "" && errors.password === "" && errors.correo === "") {
             axios.post('http://localhost:8000/registro', values)
             .then(res => {
-                navigate('/');
+                navigate('/login'); 
             })
             .catch(err => console.log(err));
         }
-    }
+    };
 
     return (
         <div className={styles.formContainer}>

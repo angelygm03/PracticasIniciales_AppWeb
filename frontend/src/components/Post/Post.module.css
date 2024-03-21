@@ -1,0 +1,11 @@
+.post {
+    background-color: #f3fffe;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    max-width: 700px; 
+    margin: 0 auto 50px;
+    text-align: left;
+}
+  

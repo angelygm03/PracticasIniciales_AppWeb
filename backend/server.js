@@ -1,10 +1,12 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -113,6 +115,19 @@ app.post('/publicaciones', (req, res) => {
     });
 });
 
+app.get('/publicaciones', (req, res) => {
+    const sql = "SELECT p.*, u.nombre AS nombreUsuario, u.apellido AS apellidoUsuario, c.nombreCurso, c.codigoCurso, cat.nombre AS nombreCatedratico, cat.apellido AS apellidoCatedratico FROM publicaciones p INNER JOIN usuarios u ON p.registroAcademico = u.registroAcademico INNER JOIN cursos c ON p.codigoCurso = c.codigoCurso INNER JOIN catedraticos cat ON p.idCatedratico = cat.idCatedratico";
+    
+    db.query(sql, (err, data) => {
+        if(err) {
+            console.log("Error al ejecutar la consulta SQL:", err);
+            return res.status(500).json({ error: "Error al recuperar las publicaciones de la base de datos" });
+        }
+        console.log('Publicaciones obtenidas de la base de datos:', data);
+        
+        return res.json(data);
+    });
+});
 
 app.listen(8000, () => {
     console.log("Server running on port 8000");

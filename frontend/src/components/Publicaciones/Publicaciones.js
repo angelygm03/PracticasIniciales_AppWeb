@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styles from '../Publicaciones/Publicaciones.module.css';
 
 function Publicaciones() {
@@ -9,6 +10,7 @@ function Publicaciones() {
     const [cursos, setCursos] = useState([]);
     const [contenidoPublicacion, setContenidoPublicacion] = useState('');
     const [registroAcademico, setRegistroAcademico] = useState(''); // Utilizamos registroAcademico en lugar de usuario
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         console.log('Fetching cursos...'); 
@@ -57,6 +59,7 @@ function Publicaciones() {
         axios.post('http://localhost:8000/publicaciones', nuevaPublicacion)
             .then(response => {
                 console.log('Publicación creada exitosamente:', response.data);
+                navigate('/inicio');
                 setSelectedCurso('');
                 setSelectedCatedratico('');
                 setContenidoPublicacion('');
