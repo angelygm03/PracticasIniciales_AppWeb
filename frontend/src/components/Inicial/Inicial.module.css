@@ -1,0 +1,196 @@
+.appwrapper {
+  background-color: white; 
+  }
+  .contenedor {
+  position: relative;
+  text-align: center;
+  }
+  
+  .divisionderecha {
+      width: auto; /* Ancho deseado para la división */
+      height: 300px; /* Altura igual a la altura de la ventana */
+      background-color: #ffffff; /* Color de fondo de la división */
+      position: fixed; /* Establece el posicionamiento fijo */
+      top: 100px; /* Alinea la parte superior con el borde superior de la ventana */
+      right: 35px; /* Alinea el lado derecho con el borde derecho de la ventana */
+      border: 1px solid black;
+    }
+  .divisionderecha li {
+      display: inline-block; /* Muestra los elementos <li> en línea */
+      margin-right: 10px; /* Ajusta el margen derecho para separar los elementos */
+    }
+    .divisionderecha input{
+      display: block; /* Convertir el label en un elemento de bloque */
+      margin-bottom: 10px;
+    }
+  .divisionderecha label {
+      display: block;
+      margin-bottom: 0px; /* Agrega espacio debajo de cada input y label */
+  }
+  
+  .divisionderecha button{
+      background-color: green; 
+  color: white; 
+  border: none; 
+  }
+  
+  .divisionderecha button:hover{
+      background-color: darkgreen; 
+  }
+
+  .publis{
+    width: 80%;
+    border: 2px solid black;
+    margin: auto;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 50px; /* Altura mínima para que no sea demasiado pequeño */
+    padding: 10px;
+    box-sizing: border-box;
+    resize: none; /* Evitar que el usuario redimensione el textarea */
+    overflow-y: hidden; /* Ocultar la barra de desplazamiento vertical */
+  }
+
+  /* Ajustar la altura automáticamente al tamaño del contenido */
+  textarea.auto-resizable {
+    height: auto;
+    width: auto;
+  }
+  
+  .cuadrado{
+  width: 650px; 
+  height: 600px; 
+  margin: auto;
+  margin-top: 80px;
+  background-color: white;
+  border: 2px solid black;
+  overflow: auto;
+  }
+  
+  .cuadrado div{
+    display: block; /* Convertir el label en un elemento de bloque */
+      margin-bottom: 15px;
+      margin-top: 15px;
+  }
+
+  .cuadrado label{
+    font-family: Arial;
+    font-weight: bold;
+    right: 100px;
+  }
+
+  .label{
+  position: absolute;
+  top: -30px; 
+  left: 25%; 
+  transform: translateX(-50%);
+  font-family: Arial;
+  font-weight: bold;
+  }
+  
+  .listafiltros{
+  position: absolute;
+  top: 20px;
+  right: 1177px;
+  z-index: 1;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: left;
+  }
+  
+  .buscador {
+  width: 900px; 
+  margin: 0 auto; 
+  text-align: center;
+  }
+  .buscador .lupa {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  }
+  
+  .buscador button{
+  background-color: gray; 
+  color: white; 
+  }
+  
+  .buscador button:hover{
+  background-color: darkgrey; 
+  }
+  
+  .botonperfil {
+  text-align: center;
+  position: absolute;
+  top: 20px; 
+  left: 94%; 
+  }
+  
+  .botonperfil button {
+  background-color: blue; 
+  color: white; 
+  border: none; 
+  padding: 3px 5px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  }
+  
+  .botonperfil button:hover {
+  background-color: darkblue; 
+  }
+  
+  .botonpubli {
+  text-align: center;
+  position: absolute;
+  top: 200px; 
+  left: 80.5%; 
+  }
+  .botonpubli button {
+  background-color: green; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  }
+  
+  .botonpubli button:hover {
+  background-color: darkgreen; 
+  }
+  
+  .imagencontainer {
+  position: absolute; 
+  top: 0; 
+  left: 0 
+  }
+  
+  .imagen {
+  width: 250px; 
+  }
+  
+  .textar {
+  width: 140px; 
+  height: 40px;
+  resize: none;
+  position: absolute;
+  top: 10px;
+  left: 1250px;
+  text-align: right;
+  border: none;
+  margin-top: 15px;
+  }
+  
+  .textar2 {
+      width: 300px; 
+      resize: none;
+      height: 100px;
+      }
+
+  .textar3 {
+      width: 300px; 
+      resize: none;
+      height: 100px;
+    }

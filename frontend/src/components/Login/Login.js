@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import styles from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 
 function Login() {
     const [registroAcademico, setRegistroAcademico] = useState('');
@@ -27,6 +29,12 @@ function Login() {
             });
     }
 
+
+  const handleClick = () => {
+
+    navigate('/inicial');
+  };
+
     return (
         <div className={styles.formContainer}>
             <h2 className={styles.topText}>Universidad de San Carlos de Guatemala</h2>
@@ -48,7 +56,7 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <button type="submit" className={styles.botonIngresar}> Ingresar </button>
+                    <button type="submit" className={styles.botonIngresar} onClick={handleClick}> Ingresar </button>
                 </div>
                 <div>
                     <Link to="/password_reset" className={`${styles.botonPassword} boton-password`}>¿Olvidó su contraseña?</Link>
