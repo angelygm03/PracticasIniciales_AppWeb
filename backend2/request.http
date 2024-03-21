@@ -3,14 +3,6 @@ GET http://localhost:9000/api/cursos HTTP/1.1
 
 ###
 POST http://localhost:9000/api/addpub HTTP/1.1
-Content-Type: application/json
-
-{
-    "usuario_registroAcademico": 2022023,
-    "mensaje": "Explica muy bien",
-    "Tipo": "Otto",
-    "Nombre":"Arquitectura de Computadoras y Ensambladores 1"
-}
 
 ###
 GET http://localhost:9000/api/verpubs HTTP/1.1

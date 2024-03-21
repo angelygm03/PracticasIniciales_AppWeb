@@ -18,9 +18,9 @@ routes.get('/verpubs', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
 
-        conn.query('SELECT * FROM publicaciones', (err, rows)=>{
+        conn.query('SELECT * FROM publicaciones ORDER BY id DESC ', (err, rows)=>{
             if(err) return res.send(err)
-
+            console.log(rows);
             res.json(rows)
         })
     })

@@ -9,6 +9,11 @@ import Publis from './publis'
 
 
 function Inicial(){
+    const [creacion, setCreacion] = useState(false);
+    const [curso, setCurso] = useState(false);
+    const [catedratico, setCatedratico]= useState(false);
+    const [nombreCurso,setNombreCurso] = useState(false);
+    const [nombreCat,setNombreCat]= useState(false);
 
     const[pub, setPub] = useState({
         usuario_registroAcademico: 2022023,
@@ -34,11 +39,45 @@ function Inicial(){
             fetch('http://localhost:9000/api/verpubs')
             .then(res => res.json())
             .then(res=> setPubs(res))
-          }
-          getpubs()
+        }
+        getpubs()
+        const listaAlReves = pubs.reverse();
     }, [])
     
 
+    const handlefiltros = (filtro) => {
+        if (filtro === 'creacion') {
+            setCreacion(true);
+            setCurso(false);
+            setCatedratico(false);
+            setNombreCurso(false);
+            setNombreCat(false);
+        } else if (filtro === 'curso') {
+            setCreacion(false);
+            setCurso(true);
+            setCatedratico(false);
+            setNombreCurso(false);
+            setNombreCat(false);
+        }else if (filtro === 'catedratico') {
+            setCreacion(false);
+            setCurso(false);
+            setCatedratico(true);
+            setNombreCurso(false);
+            setNombreCat(false);
+        }else if (filtro === 'nombrecurso') {
+            setCreacion(false);
+            setCurso(false);
+            setCatedratico(false);
+            setNombreCurso(true);
+            setNombreCat(false);
+        }else if (filtro === 'nombrecatedratico') {
+            setCreacion(false);
+            setCurso(false);
+            setCatedratico(false);
+            setNombreCurso(false);
+            setNombreCat(true);
+        }
+      }
 
     return (
         <body class={styles.appwrapper}>
@@ -63,18 +102,18 @@ function Inicial(){
                     <button>Crear Publicacion</button>
                 </div>
                 <div class={styles.cuadrado}>
-                    <Publis pubs={pubs}/>
+                <Publis pubs={pubs} creacion={creacion} curso={curso} catedratico={catedratico} nombreCurso={nombreCurso} nombreCat={nombreCat}/>
                 </div>
 
                 <label class={styles.label}>Publicaciones</label>
                 <div class={styles.listafiltros}>
                     <h3>Filtros</h3>
                         <ul>
-                            <li><input type="radio" id="filtro1" name= "filtro"></input><label for="filtro1">Fecha de Creacion</label></li>
-                            <li><input type="radio" id="filtro1" name= "filtro"></input><label for="filtro1">Filtrar por Curso</label></li>
-                            <li><input type="radio" id="filtro2" name= "filtro"></input><label for="filtro2">Filtrar por Catedratico</label></li>
-                            <li><input type="radio" id="filtro3" name= "filtro"></input><label for="filtro3">Filtro por Nombre de Curso</label></li>
-                            <li><input type="radio" id="filtro3" name= "filtro"></input><label for="filtro3">Filtrar Por Nombre de Catedratico</label></li>
+                            <li><input type="radio" id="filtro1" name= "filtro" onChange={() => handlefiltros('creacion')}></input><label for="filtro1">Fecha de Creacion</label></li>
+                            <li><input type="radio" id="filtro1" name= "filtro" onChange={() => handlefiltros('curso')}></input><label for="filtro1">Filtrar por Curso</label></li>
+                            <li><input type="radio" id="filtro2" name= "filtro" onChange={() => handlefiltros('catedratico')}></input><label for="filtro2">Filtrar por Catedratico</label></li>
+                            <li><input type="radio" id="filtro3" name= "filtro" onChange={() => handlefiltros('nombrecurso')}></input><label for="filtro3">Filtro por Nombre de Curso</label></li>
+                            <li><input type="radio" id="filtro3" name= "filtro" onChange={() => handlefiltros('nombrecatedratico')}></input><label for="filtro3">Filtrar Por Nombre de Catedratico</label></li>
                         </ul>
                 </div>
             </div>
