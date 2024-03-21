@@ -32,21 +32,21 @@ body {
 
 .botonIngresar {
     width: 350px;
-    height: 32px;
+    height: 34px;
     border-style: none;
     background-color: #ffa101;
     color: whitesmoke;
     border-radius: 5px;
-    margin-top: 8px;
+    margin-top: 12px;
 }
 .botonRegistro {
-    width: 350px;
+    width: 360px;
     height: 32px;
     border-style: none;
     background-color: #ffa101;
     color: whitesmoke;
     border-radius: 5px;
-    margin-top: 8px;
+    margin-top: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,13 +54,13 @@ body {
     font-size: 16px;
 }
 .botonPassword {
-    width: 350px;
+    width: 360px;
     height: 32px;
     border-style: none;
     background-color: #ffa101;
     color: whitesmoke;
     border-radius: 5px;
-    margin-top: 8px;
+    margin-top: 12px;
     display: flex;
     justify-content: center;
     align-items: center;

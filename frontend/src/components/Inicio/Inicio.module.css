@@ -38,7 +38,7 @@ text-align: left;
 }
 
 .buscador {
-width: 900px; 
+width: 300px; 
 margin: 0 auto; 
 text-align: center;
 }
@@ -60,23 +60,22 @@ background-color: darkgrey;
 .botonperfil {
 text-align: center;
 position: absolute;
-top: 20px; 
-left: 94%; 
+top: 40px; 
+left: 94%;
+position: absolute;
+transform: translate(-50%, -50%);
 }
 
 .botonperfil button {
-background-color: blue; 
-color: white; 
-border: none; 
-padding: 3px 5px; 
-cursor: pointer; 
-border-radius: 5px; 
-}
-
-.botonperfil button:hover {
-background-color: darkblue; 
-margin-top: 100px;
-left: 94%
+background-color: #ffa101;
+color: white;
+border: 80px;
+padding: 5px 10px;
+cursor: pointer;
+border-radius: 5px;
+width: 100px;
+height: auto; 
+margin-right: 4px;
 }
 
 .botonpubli {

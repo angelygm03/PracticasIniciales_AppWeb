@@ -16,6 +16,7 @@ function Login() {
                 console.log('Respuesta del servidor:', res.data);
                 if (res.data === "Success") {
                     console.log("Inicio de sesión exitoso, redirigiendo al usuario...");
+                    localStorage.setItem('registroAcademico', registroAcademico);
                     navigate('/inicio');
                 } else {
                     console.log("Inicio de sesión fallido, mostrando mensaje de alerta al usuario...");
@@ -48,7 +49,7 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <button type="submit" className={styles.botonIngresar}> Ingresar </button>
+                    <button type="submit" className={styles.botonPassword}> Ingresar </button>
                 </div>
                 <div>
                     <Link to="/password_reset" className={`${styles.botonPassword} boton-password`}>¿Olvidó su contraseña?</Link>

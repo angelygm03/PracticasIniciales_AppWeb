@@ -4,6 +4,8 @@ import Login from './components/Login/Login'
 import Registro from './components/Registro/Registro'
 import Inicio from './components/Inicio/Inicio'
 import Password from './components/Password/Password'
+import Perfil from './components/Perfil/Perfil';
+import Publicaciones from './components/Publicaciones/Publicaciones';
 
 function App() {
   useEffect(() => {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/registro" element={<Registro />} />
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/password_reset" element={<Password />} />
+        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/publicaciones" element={<Publicaciones />} />
       </Routes>
     </BrowserRouter>
   );

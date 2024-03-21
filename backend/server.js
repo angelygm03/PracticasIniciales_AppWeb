@@ -67,7 +67,51 @@ app.post('/', (req, res) => {
     });
 });
 
+app.get('/cursos', (req, res) => {
+    const sql = "SELECT codigoCurso, nombreCurso FROM cursos";
+    
+    db.query(sql, (err, data) => {
+        if(err) {
+            console.log("Error al ejecutar la consulta SQL:", err);
+            return res.status(500).json({ error: "Error al recuperar los cursos de la base de datos" });
+        }
+        console.log('Cursos obtenidos de la base de datos:', data);
+        
+        return res.json(data);
+    });
+});
 
+app.get('/catedraticos/:codigoCurso', (req, res) => {
+    const codigoCurso = req.params.codigoCurso;
+    const sql = "SELECT idCatedratico, CONCAT(nombre, ' ', apellido) AS nombreCompleto FROM catedraticos WHERE codigoCurso = ?";
+    
+    db.query(sql, [codigoCurso], (err, data) => {
+        if(err) {
+            console.log("Error al ejecutar la consulta SQL:", err);
+            return res.status(500).json({ error: "Error al recuperar los catedráticos de la base de datos" });
+        }
+        console.log('Catedráticos obtenidos de la base de datos:', data);
+        
+        return res.json(data);
+    });
+});
+
+app.post('/publicaciones', (req, res) => {
+    console.log('Solicitud POST recibida en /publicaciones:', req.body);
+    const { registroAcademico, codigoCurso, idCatedratico, comentario } = req.body;
+    
+    const sql = "INSERT INTO publicaciones (registroAcademico, codigoCurso, idCatedratico, comentario) VALUES (?, ?, ?, ?)";
+    const values = [registroAcademico, codigoCurso, idCatedratico, comentario];
+    
+    db.query(sql, values, (err, result) => {
+        if(err) {
+            console.error("Error al insertar en la base de datos:", err); 
+            return res.status(500).json({ error: "Error al guardar en la base de datos" });
+        }
+        console.log("Publicación insertada correctamente en la base de datos");
+        return res.json({ message: "Publicación guardada en la base de datos" });
+    });
+});
 
 
 app.listen(8000, () => {
